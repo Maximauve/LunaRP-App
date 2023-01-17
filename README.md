@@ -12,6 +12,7 @@ Ce projet est une application de Donjon et Dragon. Le but est de pouvoir créer 
 		- [Application mobile](#application-mobile-1)
 		- [Application web](#application-web-1)
 	- [Trello](#trello)
+	- [Objectif pour la prochaine séance](#objectif-pour-la-prochaine-séance)
 ## Composition de l'équipe
 
 - REYPE Costa : Développeur Mobile
@@ -119,3 +120,11 @@ Elle permettra d'interagir avec l'application mobile et web, et fera office de p
 ## Trello
 
 [Vous trouverez ici le lien du trello](https://trello.com/b/NnMnuTdq/conduite-de-projet)
+
+
+
+## Objectif pour la prochaine séance
+- Rassembler toutes les tâches dans le trello
+- Faire les schémas de la BDD et la construire
+- Commencer à remplir la BDD
+- Initialiser tous les projets (NestJS, Symfony, Kotlin)
