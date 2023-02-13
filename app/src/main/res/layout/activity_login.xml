@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="30dp"
-            android:text="Connexion"
+            android:text="Se connecter"
             android:textColor="#6dffbf"
             android:textSize="25dp" />
 
@@ -27,7 +27,7 @@
             android:id="@+id/et_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Mail"
+            android:hint="Email"
             android:textAlignment="center"
             android:textColor="#6bfff7"
             android:textColorHint="#52afaa" />
@@ -50,25 +50,19 @@
             android:padding="25dp">
 
             <Button
-                android:id="@+id/btn_reset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Réinitialiser"
-                android:textAllCaps="false" />
-
-            <Button
                 android:id="@+id/btn_submit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Se connecter"
-                android:textAllCaps="false" />
+                android:text="Valider"
+                android:textAllCaps="false"
+                app:cornerRadius="50dp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/link_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="center|end"
             android:text="Je n'ai pas de compte" />
 
     </LinearLayout>
