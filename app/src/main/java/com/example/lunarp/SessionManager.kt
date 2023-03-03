@@ -4,16 +4,18 @@ import java.sql.Connection
 
 object SessionManager {
     public var username : String = "";
-    public var userMail : String = "";
+    public var userMail = "";
     public var userId : Int = -1;
 
     fun logIn(userMail : String, userPassword : String){
         this.userMail = userMail;
-        this.userId = 2;
+
+        // ssearch with API the ID of the user
     }
 
     fun isLogin() : Boolean {
-        return userId != -1
+        return userMail != ""
+        //return userId != -1
     }
     fun logOut(){
         this.username = "";
