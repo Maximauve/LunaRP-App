@@ -102,8 +102,10 @@ class Register : AppCompatActivity() {
             finish()
         }
     }
+}
 
-    fun signUp(name: String, mail: String, password: String){
+/*
+fun signUp(name: String, mail: String, password: String){
         println(":::::::::: SIGN UP ::::::::::")
 
         var retrofit = RequestUtils.retrofitBase.create(UserInterface::class.java)
@@ -143,4 +145,4 @@ class Register : AppCompatActivity() {
 
         })
     }
-}
+ */

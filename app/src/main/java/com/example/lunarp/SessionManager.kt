@@ -6,9 +6,11 @@ object SessionManager {
     public var username : String = "";
     public var userMail = "";
     public var userId : Int = -1;
+    public var userPassword: String = ""
 
     fun logIn(userMail : String, userPassword : String){
         this.userMail = userMail;
+        this.userPassword = userPassword;
 
         // ssearch with API the ID of the user
     }
@@ -26,6 +28,7 @@ object SessionManager {
     override fun toString(): String {
         return "SessionManager(username='$username', user_mail='$userMail', user_id=$userId)"
     }
+
 
 
 }

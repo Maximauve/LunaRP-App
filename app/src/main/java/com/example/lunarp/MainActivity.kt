@@ -23,19 +23,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val userSession = SessionManager
-
-        if (!userSession.isLogin()){
+        if (!SessionManager.isLogin()){
             val login = Intent(this, Login::class.java)
             startActivity(login)
-            //finish()
+            finish()
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val loginBinding = Login()
-
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = binding.viewPager
@@ -44,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
         val fab: FloatingActionButton = binding.fab
         val test = binding.etTest
+
+        test.text = SessionManager.userMail
 
         fab.setOnClickListener { view ->
             connectionTest()

@@ -3,6 +3,7 @@ package com.example.lunarp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.se.omapi.Session
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -16,24 +17,61 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class Login : AppCompatActivity() {
+    var errorMessage = ""
     override fun onCreate(savedInstanceState: Bundle?) {
+        val main = Intent(this, MainActivity::class.java)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        var user_mail_ = findViewById<EditText>(R.id.et_email)
-        var password_ = findViewById<EditText>(R.id.et_password)
-        var btn_submit_ = findViewById<Button>(R.id.btn_submit)
-        var link_register_ = findViewById<TextView>(R.id.link_register)
-        // set on-click listener
+
+        val user_mail_ = findViewById<EditText>(R.id.et_email)
+        val password_ = findViewById<EditText>(R.id.et_password)
+        val btn_submit_ = findViewById<Button>(R.id.btn_submit)
+        val link_register_ = findViewById<TextView>(R.id.link_register)
+
         btn_submit_.setOnClickListener {
-            val userName = user_mail_.text.toString();
             val userMail = user_mail_.text.toString();
             val password = password_.text.toString();
-            if (userMail.isNotEmpty() && password.isNotEmpty()){
-                signIn(userMail, password)
-            }
-            // your code to validate the user_name and password combination
-            // and verify the same
 
+            if (user_mail_.text.isEmpty() || password_.text.isEmpty()){
+                Toast.makeText(this@Login, "Veillez remplir tous les champs", Toast.LENGTH_LONG).show()
+            } else {
+
+                ///
+
+                println(":::::::::: SIGN IN ::::::::::")
+                var retrofit = RequestUtils.retrofitBase.create(UserInterface::class.java)
+                val user = UserLoginClassItem(email = userMail, password = password)
+
+                println(user)
+                var retrofitData = retrofit.login(user)
+
+                retrofitData.enqueue(object: Callback<UserClassItem> {
+                    override fun onResponse(call: Call<UserClassItem>, response: Response<UserClassItem>) {
+                        val errorStr = response.errorBody()?.string()
+                        if (response.isSuccessful){
+
+                            SessionManager.logIn(userMail, password)
+                            startActivity(main)
+                            finish()
+                        }
+                        when (response.code()) {
+                            400 ->{
+                                Toast.makeText(this@Login, "email doit être un email" , Toast.LENGTH_LONG).show()
+                            }
+                            401 -> {
+                                Toast.makeText(this@Login, "Mot de passe ou Email mauvais", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<UserClassItem>, t: Throwable) {
+                        Log.d("LoginActivity", "onfailure: "+ t.message )
+                    }
+                })
+
+                ///
+            }
         }
 
         link_register_.setOnClickListener{
@@ -43,27 +81,34 @@ class Login : AppCompatActivity() {
         }
     }
 
-    fun signIn(mail: String, password: String){
-        println(":::::::::: TEST ::::::::::")
 
-        var retrofit = RequestUtils.retrofitBase.create(UserInterface::class.java)
-        val user = UserLoginClassItem(email = mail, password = password)
-        println("BREFORE !!!!!!!!!!")
-        var retrofitData = retrofit.login(user)
-        retrofitData.enqueue(object: Callback<UserClassItem> {
-            override fun onResponse(call: Call<UserClassItem>, response: Response<UserClassItem>) {
-                println("REPONSE ----------> ${response.code()}" )
-                if (response.code() == 401) {
-                    Toast.makeText(this@Login, "Tu n'as pas de compte !", Toast.LENGTH_LONG).show()
-                } else {
-                    SessionManager.logIn(mail, password);
-                    finish()
-                }
-            }
-
-            override fun onFailure(call: Call<UserClassItem>, t: Throwable) {
-                Log.d("LoginActivity", "onfailure: "+ t.message )
-            }
-        })
-    }
 }
+/*fun signIn(mail: String, password: String){
+    println(":::::::::: SIGN IN ::::::::::")
+    var retrofit = RequestUtils.retrofitBase.create(UserInterface::class.java)
+    val user = UserLoginClassItem(email = mail, password = password)
+
+    println(user)
+    var retrofitData = retrofit.login(user)
+
+    retrofitData.enqueue(object: Callback<UserClassItem> {
+        override fun onResponse(call: Call<UserClassItem>, response: Response<UserClassItem>) {
+            val errorStr = response.errorBody()?.string()
+            when (response.code()) {
+                400 ->{
+                    errorMessage = "email doit être un email"
+                }
+                401 -> {
+                    errorMessage = "Mot de passe ou Email mauvais"
+                }
+                201 -> {
+                    SessionManager.logIn(mail, password)
+                };
+            }
+        }
+
+        override fun onFailure(call: Call<UserClassItem>, t: Throwable) {
+            Log.d("LoginActivity", "onfailure: "+ t.message )
+        }
+    })
+}*/
