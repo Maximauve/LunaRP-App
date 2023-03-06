@@ -50,8 +50,8 @@ class Login : AppCompatActivity() {
                     override fun onResponse(call: Call<UserClassItem>, response: Response<UserClassItem>) {
                         val errorStr = response.errorBody()?.string()
                         if (response.isSuccessful){
-
-                            SessionManager.logIn(userMail, password)
+                            println("---> ${response.body()}")
+                            SessionManager.logIn(userMail, password, response.body()?.token ?: "")
                             startActivity(main)
                             finish()
                         }

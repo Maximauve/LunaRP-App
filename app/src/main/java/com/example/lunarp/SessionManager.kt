@@ -7,11 +7,13 @@ object SessionManager {
     public var userMail = "";
     public var userId : Int = -1;
     public var userPassword: String = ""
+    public  var userToken: String = ""
 
-    fun logIn(userMail : String, userPassword : String){
+    fun logIn(userMail : String, userPassword : String, userToken: String){
         this.userMail = userMail;
         this.userPassword = userPassword;
-
+        this.userToken = userToken
+        RequestUtils.reloadClient()
         // ssearch with API the ID of the user
     }
 
@@ -22,7 +24,9 @@ object SessionManager {
     fun logOut(){
         this.username = "";
         this.userMail = "";
+        this.userToken = "";
         this.userId = -1;
+        RequestUtils.reloadClient()
     }
 
     override fun toString(): String {

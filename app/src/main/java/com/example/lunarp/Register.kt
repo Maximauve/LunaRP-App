@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.lunarp.user.UserClassItem
 import com.example.lunarp.user.UserInterface
+import com.example.lunarp.user.UserLoginClassItem
 import com.example.lunarp.user.UserRegisterClassItem
 import io.ktor.util.reflect.*
 import retrofit2.Call
@@ -55,8 +56,8 @@ class Register : AppCompatActivity() {
                     println(":::::::::: SIGN UP ::::::::::")
 
                     var retrofit = RequestUtils.retrofitBase.create(UserInterface::class.java)
-                    val user = UserRegisterClassItem(email = userMail, username = username, password = password, role = "User")
-                    var retrofitData = retrofit.register(user)
+                    var userRegister = UserRegisterClassItem(email = userMail, username = username, password = password, role = "User")
+                    var retrofitData = retrofit.register(userRegister)
 
                     retrofitData.enqueue(object: Callback<UserClassItem>{
                         override fun onFailure(call: Call<UserClassItem>, t: Throwable) {
@@ -66,9 +67,33 @@ class Register : AppCompatActivity() {
                         override fun onResponse(call: Call<UserClassItem>, response: Response<UserClassItem>) {
                             val errorStr = response.errorBody()?.string()
                             if (response.isSuccessful) {
-                                SessionManager.logIn(userMail, password);
-                                startActivity(main)
-                                finish()
+                                println("---> ${response.body()}")
+                                SessionManager.logIn(userMail, password, response.body()?.token ?: "");
+
+                                println(":::::::::: SIGN IN ::::::::::")
+                                retrofit = RequestUtils.retrofitBase.create(UserInterface::class.java)
+                                val userLogin = UserLoginClassItem(email = userMail, password = password)
+
+                                retrofitData = retrofit.login(userLogin)
+
+                                retrofitData.enqueue(object: Callback<UserClassItem> {
+                                    override fun onResponse(call: Call<UserClassItem>, response: Response<UserClassItem>) {
+                                        val errorStr = response.errorBody()?.string()
+                                        if (response.isSuccessful){
+                                            println("---> ${response.body()}")
+                                            SessionManager.logIn(userMail, password, response.body()?.token ?: "")
+                                            startActivity(main)
+                                            finish()
+                                        } else {
+                                            println("----> $response.body()")
+                                        }
+                                    }
+
+                                    override fun onFailure(call: Call<UserClassItem>, t: Throwable) {
+                                        Log.d("LoginActivity", "onfailure: "+ t.message )
+                                    }
+                                })
+
                             }
                             when (response.code()){
                                 400 -> {

@@ -17,5 +17,6 @@ data class UserClassItem(
     val email: String,
     val id : Int,
     val role: String,
-    val username: String
+    val username: String,
+    val token : String
 )
