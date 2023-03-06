@@ -10,9 +10,10 @@
         android:id="@+id/ll_main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#444444"
+        android:background="@color/color_bg_1"
         android:gravity="center"
         android:orientation="vertical"
+        android:theme="@style/Theme.LunaRP.AppBarOverlay"
         android:padding="25dp">
 
         <TextView
@@ -20,7 +21,7 @@
             android:layout_height="wrap_content"
             android:padding="30dp"
             android:text="Se connecter"
-            android:textColor="#6dffbf"
+            android:textColor="@color/color_accent"
             android:textSize="25dp" />
 
         <EditText
@@ -29,8 +30,8 @@
             android:layout_height="wrap_content"
             android:hint="Email"
             android:textAlignment="center"
-            android:textColor="#6bfff7"
-            android:textColorHint="#52afaa" />
+            android:textColor="@color/color_light"
+            android:textColorHint="@color/color_light" />
 
         <EditText
             android:id="@+id/et_password"
@@ -39,8 +40,8 @@
             android:hint="Mot de passe"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textColor="#6bfff7"
-            android:textColorHint="#52afaa" />
+            android:textColor="@color/color_light"
+            android:textColorHint="@color/color_light" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,6 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Valider"
+                android:textColor="@color/color_light"
                 android:textAllCaps="false"
                 app:cornerRadius="50dp" />
         </LinearLayout>
@@ -63,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|end"
+            android:textColor="@color/color_accent"
             android:text="Je n'ai pas de compte" />
 
     </LinearLayout>

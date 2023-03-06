@@ -3,12 +3,16 @@ package com.example.lunarp
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.example.lunarp.databinding.ActivityMainBinding
 import com.example.lunarp.item.ItemClassItem
@@ -29,17 +33,16 @@ private val MENU_ID_LOGOUT = 3
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menu.add(0,MENU_ID_SETTINGS,0,"Paramètres")
-        menu.add(0,MENU_ID_PROFIL,0,"Profile")
-        menu.add(0,MENU_ID_LOGOUT,0,"Se déconnecter")
-        return super.onCreateOptionsMenu(menu)
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+
+        setupViewPager(binding.viewPager)
+        binding.tabs.setupWithViewPager(binding.viewPager)
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = binding.viewPager
@@ -47,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
         val fab: FloatingActionButton = binding.fab
-        val test = binding.etTest
+        val profileIcon = binding.profileImage
 
         if (!SessionManager.isLogin()){
             val login = Intent(this, Login::class.java)
@@ -55,8 +58,13 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        test.text = SessionManager.userToken
+        profileIcon.setOnClickListener{view ->
 
+            SessionManager.logOut()
+            finish();
+            startActivity(intent);
+
+        }
         fab.setOnClickListener { view ->
             SessionManager.logOut()
             finish();
@@ -89,39 +97,33 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    val BASE_URL_TEST = "https://jsonplaceholder.typicode.com/"
-    val URL_API_TOTO = "http://192.168.1.60:3000/"
-    fun connectionTest(){
+    private fun setupViewPager(viewPager: ViewPager) {
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(CharacterFragment(), "Personnages")
+        adapter.addFragment(CampaignFragment(), "Mes Campagnes")
+        viewPager.adapter = adapter
+    }
 
-        println(":::::::::: TEST ::::::::::")
+    internal class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+        private val mFragmentList = mutableListOf<Fragment>()
+        private val mFragmentTitleList = mutableListOf<String>()
 
+        override fun getItem(position: Int): Fragment {
+            return mFragmentList[position]
+        }
 
-        var retrofit = RequestUtils.retrofitBase.create(ItemInterface::class.java)
-        val retrofitData = retrofit.getData()
-        println("RESPONSE : ----------------------------->")
+        override fun getCount(): Int {
+            return mFragmentList.size
+        }
 
-        retrofitData.enqueue(object : Callback<List<ItemClassItem>?> {
-            override fun onResponse(
-                call: Call<List<ItemClassItem>?>,
-                response: retrofit2.Response<List<ItemClassItem>?>
-            ) {
-                val responseBody = response.body()
+        override fun getPageTitle(position: Int): CharSequence? {
+            return mFragmentTitleList[position]
+        }
 
-                val myStringBuilder = StringBuilder()
-                if (responseBody != null) {
-                    for (myData in responseBody){
-                        myStringBuilder.append(myData.id)
-                        myStringBuilder.append("\n")
-                    }
-                }
-                val test = binding.etTest
-                test.text= myStringBuilder
-            }
-
-            override fun onFailure(call: Call<List<ItemClassItem>?>, t: Throwable) {
-                Log.d("MainACtivity", "onfailure: "+ t.message )
-            }
-        })
+        fun addFragment(fragment: Fragment, title: String) {
+            mFragmentList.add(fragment)
+            mFragmentTitleList.add(title)
+        }
     }
 
 }
