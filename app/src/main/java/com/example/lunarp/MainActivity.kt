@@ -1,31 +1,19 @@
 package com.example.lunarp
 
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.viewpager.widget.ViewPager
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.lunarp.character.CharacterListAdapter
 import com.example.lunarp.databinding.ActivityMainBinding
-import com.example.lunarp.item.ItemClassItem
-import com.example.lunarp.item.ItemInterface
-import com.example.lunarp.ui.main.SectionsPagerAdapter
+import com.example.lunarp.fragment.CampaignFragment
+import com.example.lunarp.fragment.CharacterFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 private const val MENU_ID_SETTINGS= 1
 private val MENU_ID_PROFIL = 2
@@ -36,39 +24,50 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
-
-        setupViewPager(binding.viewPager)
-        binding.tabs.setupWithViewPager(binding.viewPager)
-
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = binding.tabs
-        tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionButton = binding.fab
-        val profileIcon = binding.profileImage
-
         if (!SessionManager.isLogin()){
             val login = Intent(this, Login::class.java)
             startActivity(login)
             finish()
         }
 
-        profileIcon.setOnClickListener{view ->
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val tabs: TabLayout = binding.tabs
+        val viewPager = binding.viewPager
 
+        setSupportActionBar(binding.toolbar)
+
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(CharacterFragment(), "Personnages")
+        adapter.addFragment(CampaignFragment(), "Campagnes")
+
+        viewPager.adapter = adapter
+        tabs.setupWithViewPager(viewPager)
+
+        val fab: FloatingActionButton = binding.fab
+        val profileIcon = binding.profileImage
+
+        profileIcon.setOnClickListener{view ->
             SessionManager.logOut()
             finish();
             startActivity(intent);
 
         }
+
+        var adapterCharacter = CharacterListAdapter(this)
+        val currentFragment = supportFragmentManager
+            .findFragmentByTag("android:switcher:" + viewPager.id + ":" + tabs.selectedTabPosition)
+        if (currentFragment is CharacterFragment) {
+            val rvCharacter = currentFragment.view?.findViewById<RecyclerView>(R.id.rv)
+            rvCharacter!!.adapter = adapterCharacter
+            rvCharacter.layoutManager = GridLayoutManager(this,1)
+        }
+
+
         fab.setOnClickListener { view ->
-            SessionManager.logOut()
-            finish();
-            startActivity(intent);
+            println("Tab position")
+            println(tabs.selectedTabPosition)
+
             Snackbar.make(view, "Roll Dice settings", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
@@ -97,33 +96,5 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun setupViewPager(viewPager: ViewPager) {
-        val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(CharacterFragment(), "Personnages")
-        adapter.addFragment(CampaignFragment(), "Mes Campagnes")
-        viewPager.adapter = adapter
-    }
-
-    internal class ViewPagerAdapter(manager: FragmentManager) : FragmentPagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-        private val mFragmentList = mutableListOf<Fragment>()
-        private val mFragmentTitleList = mutableListOf<String>()
-
-        override fun getItem(position: Int): Fragment {
-            return mFragmentList[position]
-        }
-
-        override fun getCount(): Int {
-            return mFragmentList.size
-        }
-
-        override fun getPageTitle(position: Int): CharSequence? {
-            return mFragmentTitleList[position]
-        }
-
-        fun addFragment(fragment: Fragment, title: String) {
-            mFragmentList.add(fragment)
-            mFragmentTitleList.add(title)
-        }
-    }
 
 }

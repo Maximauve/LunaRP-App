@@ -3,19 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CharacterFragment">
+    android:orientation="vertical"
+    tools:context=".fragment.CharacterFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="All Characters" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:foregroundGravity="center_vertical|center|center_horizontal"
+        android:text="All Characters"
+        android:textColor="@color/color_accent"
+        android:textSize="34sp" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:itemCount="5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:itemCount="2"
         tools:listitem="@layout/row_character">
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -12,7 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:background">@color/color_bg_1</item>
         <item name="android:textColor">@color/color_light</item>
         <item name="android:textColorHint">@color/color_light</item>
         <item name="android:toolbarStyle">@color/color_accent</item>
