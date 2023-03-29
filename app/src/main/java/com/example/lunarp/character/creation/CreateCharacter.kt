@@ -3,7 +3,12 @@ package com.example.lunarp.character.creation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.lunarp.R
+import com.example.lunarp.ViewPagerAdapter
 import com.example.lunarp.databinding.ActivityCreateCharacterBinding
+import com.example.lunarp.databinding.ActivityMainBinding
+import com.example.lunarp.fragment.CampaignFragment
+import com.example.lunarp.fragment.CharacterFragment
+import com.google.android.material.tabs.TabLayout
 
 class CreateCharacter : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,33 +18,15 @@ class CreateCharacter : AppCompatActivity() {
         var binding = ActivityCreateCharacterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.next.setOnClickListener  { view ->
-            println("Entries: ")
-            var nameText = binding.name.text.toString()
-            var raceText = binding.race.text.toString()
-            var classText = binding.classId.text.toString()
-            var levelText = binding.level.text.toString()
-            var expText = binding.exp.text.toString()
-            var alignmentText  = binding.alignment.text.toString()
-            var descriptionText = binding.description.text.toString()
+        val tabs: TabLayout = binding.tabsCreate
+        val viewPager = binding.viewPager
 
-            var strValue = binding.strength.text.toString()
-            var dexValue = binding.desxterity.text.toString()
-            var conValue = binding.constitution.text.toString()
-            var wisValue = binding.wisdom.text.toString()
-            var intValue = binding.intelligence.text.toString()
-            var chaValue = binding.charisma.text.toString()
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(CreateCharacter_Global(), "Global")
 
-            println(nameText)
-            println(raceText)
-            println(classText)
-            println(levelText)
-            println(expText)
-            println(alignmentText)
-            println(descriptionText)
-            println("$strValue | $dexValue | $conValue | $wisValue | $intValue | $chaValue")
+        viewPager.adapter = adapter
+        tabs.setupWithViewPager(viewPager)
 
-        }
 
     }
 }

@@ -41,7 +41,13 @@ object RequestUtils {
         .build()
     fun reloadClient () {
         okHttpClient = OkHttpClient.Builder()
-            .addInterceptor(AuthInterceptor(SessionManager.userToken))
+            .addInterceptor { chain ->
+                val request = chain.request()
+                    .newBuilder()
+                    .header("Authorization", "Bearer ${SessionManager.userToken}")
+                    .build()
+                chain.proceed(request)
+            }
             .build()
 
         retrofitBase = Retrofit.Builder()

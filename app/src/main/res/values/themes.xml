@@ -24,7 +24,8 @@
     </style>
 
     <style name="Theme.LunaRP.Page">
-        <item name="android:background">@color/color_bg_1</item>
+        <item name="android:textColorPrimary">@color/color_light</item>
+        <item name="android:textColorSecondary">@color/color_light</item>
         <item name="android:textViewStyle">@color/color_accent</item>
         <item name="android:textColor">@color/color_light</item>
     </style>

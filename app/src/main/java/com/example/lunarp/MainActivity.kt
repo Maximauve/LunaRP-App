@@ -26,11 +26,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*if (!SessionManager.isLogin()){
+        if (!SessionManager.isLogin()){
             val login = Intent(this, Login::class.java)
             startActivity(login)
             finish()
-        }*/
+        }
 
         val fab_close = AnimationUtils.loadAnimation(applicationContext, R.anim.fab_close);
         val fab_open = AnimationUtils.loadAnimation(applicationContext, R.anim.fab_open);
