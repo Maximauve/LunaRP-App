@@ -34,7 +34,7 @@
             <LinearLayout
                 android:id="@+id/main"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="#00930A0A"
                 android:orientation="horizontal">
 
@@ -83,15 +83,11 @@
             android:id="@+id/rv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:itemCount="2"
             tools:listitem="@layout/row_character">
 
         </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 
 </FrameLayout>

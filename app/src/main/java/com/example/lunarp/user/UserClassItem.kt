@@ -12,7 +12,6 @@ data class UserLoginClassItem(
     val email: String,
     val password: String,
 )
-
 data class UserClassItem(
     val email: String,
     val id : Int,

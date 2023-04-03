@@ -202,8 +202,8 @@ class CreateCharacter_Global : Fragment() {
 
             var classSelectedID = classes.find { it.name == classSelected }
             var raceSelectedID = races.find {it.name == raceSelected}
-            var characterCreated = CharacterClassItem(alignment.toString(), chaValue, classSelectedID?.id ?: 0,
-                conValue, description, dexValue, 0, intValue, listOf(1, 1), 1, name.toString(), raceSelectedID?.id?:0,
+            var characterCreated = CharacterClassItem(alignment.toString(), chaValue, classSelectedID!!.id,
+                conValue, description, dexValue, 0, intValue, listOf(1, 1), 1, name.toString(), raceSelectedID!!.id,
                 listOf(), strValue, SessionManager.userId, wisValue)
 
             var retrofitCharacter = RequestUtils.retrofitBase.create<CharacterInterface>()
@@ -228,6 +228,9 @@ class CreateCharacter_Global : Fragment() {
 
                 override fun onFailure(call: Call<CharacterClassItem>, t: Throwable) {
                     println("::::::Create Character fail:::::")
+                    if (t.message?.contains("xpected an int but was BEGIN_OBJECT at line 1 column 198 path \$.user") == true){
+                        println("AFFICHER LA PAGE SPELL")
+                    }
                     Log.d("ActivityCreateCharacterBinding", "onfailure: "+ t.message )
                 }
 

@@ -11,3 +11,11 @@ data class RaceClassItem(
     val size: String,
     val speed: Int
 )
+
+data class Race(
+    val description: String,
+    val id: Int,
+    val name: String,
+    val size: String,
+    val speed: Int
+)

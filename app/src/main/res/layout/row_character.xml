@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:layout_margin="5dp"
         android:backgroundTint="@color/color_bg_3"
+        android:clickable="true"
         app:cardCornerRadius="5dp"
         app:cardElevation="5dp">
 
@@ -31,8 +32,8 @@
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_weight="1"
-                    tools:visibility="visible"
-                    tools:srcCompat="@drawable/baseline_person_24"  />
+                    tools:srcCompat="@drawable/baseline_person_24"
+                    tools:visibility="visible" />
             </LinearLayout>
 
             <LinearLayout
@@ -47,6 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:enabled="false"
                     android:gravity="center_horizontal"
                     android:inputType="textPersonName"
                     android:text="Name"
