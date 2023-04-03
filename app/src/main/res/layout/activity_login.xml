@@ -6,23 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/istockphoto_1128211614_170667a" />
+
     <LinearLayout
         android:id="@+id/ll_main_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/color_bg_1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_top"
         android:gravity="center"
         android:orientation="vertical"
+        android:padding="25dp"
         android:theme="@style/Theme.LunaRP.AppBarOverlay"
-        android:padding="25dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="30dp"
-            android:text="Se connecter"
+            android:text="@string/action_sign_in_short"
             android:textColor="@color/color_accent"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/et_email"
@@ -55,8 +73,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Valider"
-                android:textColor="@color/color_light"
                 android:textAllCaps="false"
+                android:textColor="@color/color_light"
                 app:cornerRadius="50dp" />
         </LinearLayout>
 
@@ -65,8 +83,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center|end"
-            android:textColor="@color/color_accent"
-            android:text="Je n'ai pas de compte" />
+            android:text="Je n'ai pas de compte"
+            android:textColor="@color/color_accent" />
 
     </LinearLayout>
 
