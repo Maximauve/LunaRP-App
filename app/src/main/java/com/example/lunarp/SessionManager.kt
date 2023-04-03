@@ -1,17 +1,22 @@
 package com.example.lunarp
 
-import java.sql.Connection
+import com.example.lunarp.user.User
+import com.example.lunarp.user.UserClassItem
 
 object SessionManager {
     public var username : String = "";
     public var userMail = "";
     public var userId : Int = -1;
-    public var userPassword: String = ""
     public  var userToken: String = ""
+    public var userRole: String = ""
 
-    fun logIn(userMail : String, userPassword : String, userToken: String){
-        this.userMail = userMail;
-        this.userPassword = userPassword;
+    fun getUser(): User {
+        return User(userId, username, userMail, userRole)
+    }
+    fun logIn(user: UserClassItem?,userToken: String){
+        this.userMail = user!!.email ;
+        this.username = user.username
+        this.userRole = user!!.role
         this.userToken = userToken
         RequestUtils.reloadClient()
         // ssearch with API the ID of the user

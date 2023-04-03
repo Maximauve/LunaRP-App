@@ -1,6 +1,5 @@
 package com.example.lunarp
 
-import android.app.DownloadManager.Request
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,11 +12,9 @@ import com.example.lunarp.user.UserClassItem
 import com.example.lunarp.user.UserInterface
 import com.example.lunarp.user.UserLoginClassItem
 import com.example.lunarp.user.UserRegisterClassItem
-import io.ktor.util.reflect.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.reflect.typeOf
 
 class Register : AppCompatActivity() {
     var errorMessage = ""
@@ -68,7 +65,7 @@ class Register : AppCompatActivity() {
                             val errorStr = response.errorBody()?.string()
                             if (response.isSuccessful) {
                                 println("---> ${response.body()}")
-                                SessionManager.logIn(userMail, password, response.body()?.token ?: "");
+                                SessionManager.logIn(response.body(), response.body()?.token ?: "");
 
                                 println(":::::::::: SIGN IN ::::::::::")
                                 retrofit = RequestUtils.retrofitBase.create(UserInterface::class.java)
@@ -81,7 +78,7 @@ class Register : AppCompatActivity() {
                                         val errorStr = response.errorBody()?.string()
                                         if (response.isSuccessful){
                                             println("---> ${response.body()}")
-                                            SessionManager.logIn(userMail, password, response.body()?.token ?: "")
+                                            SessionManager.logIn(response.body(), response.body()?.token ?: "")
                                             startActivity(main)
                                             finish()
                                         } else {

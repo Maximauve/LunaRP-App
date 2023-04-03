@@ -1,29 +1,28 @@
 package com.example.lunarp.character
 
-import com.example.lunarp.User
 import com.example.lunarp.classes.ClassesClassItem
 import com.example.lunarp.item.Inventory
 import com.example.lunarp.races.Race
 import com.example.lunarp.races.RaceClassItem
+import com.example.lunarp.user.User
 import com.example.lunarp.user.UserClassItem
 
 data class CharacterBean(
-    var id: Int,
     val alignment: String,
+    val campaign: List<Any>?,
     val charisma: Int,
-    val classe: ClassesClassItem,
+    val classe: Int,
     val constitution: Int,
     val description: String,
     val dexterity: Int,
     val experience: Int,
     val intelligence: Int,
-    val inventory: Int,
+    val inventory: List<Int>?,
     val level: Int,
     val name: String,
-    val race: RaceClassItem,
+    val race: Int,
     val spells: List<Int>,
     val strength: Int,
-    val user: UserClassItem,
     val wisdom: Int
 )
 
@@ -48,7 +47,7 @@ data class CharacterClassItem(
 
 data class Character(
     val alignment: String,
-    val campaign: List<Any>,
+    val campaign: List<Any>?,
     val charisma: Int,
     val classe: ClassesClassItem,
     val constitution: Int,
@@ -60,7 +59,7 @@ data class Character(
     val inventory: List<Inventory>,
     val level: Int,
     val name: String,
-    val race: Race,
+    val race: RaceClassItem,
     val spells: List<Any>,
     val strength: Int,
     val user: User,

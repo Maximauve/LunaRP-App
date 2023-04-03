@@ -17,5 +17,13 @@ data class UserClassItem(
     val id : Int,
     val role: String,
     val username: String,
-    val token : String
+    val token : String,
+    val password: String
 )
+
+data class User (
+    val id: Int,
+    val name: String,
+    val email: String,
+    val role: String,
+);
