@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.example.lunarp.RequestUtils
 import com.example.lunarp.character.Character
 import com.example.lunarp.character.CharacterInterface
+import com.example.lunarp.character.update.UpdateCharacter
 import com.example.lunarp.databinding.FragmentReadCharacterGlobalBinding
 import com.typesafe.config.impl.Parseable.newString
 import retrofit2.Call
@@ -36,6 +37,8 @@ class ViewCharacter_Global : Fragment() {
 
         println("Extras here ! ${activity!!.intent.extras?.get("itemId")}")
 
+        lateinit var character : Character
+
         val id = activity!!.intent.extras?.get("itemId")
 
         var retrofit = RequestUtils.retrofitBase.create(CharacterInterface::class.java)
@@ -48,17 +51,48 @@ class ViewCharacter_Global : Fragment() {
             ) {
                 if (response.isSuccessful){
                     println("--> ${response.body()}")
-
+                    character = response.body()!!
                     binding.tvName.hint = "${response.body()?.name} lvl ${response.body()?.level}"
                     binding.tvRace.text = response.body()?.race?.name
                     binding.tvClass.text = response.body()?.classe?.name
                     binding.tvAlignment.text = response.body()?.alignment
-                    binding.tvStrenght.text= response.body()?.strength.toString()
-                    binding.tvDexterity.text= response.body()?.dexterity.toString()
-                    binding.tvConstitution.text = response.body()?.constitution.toString()
-                    binding.tvIntelligence.text = response.body()?.intelligence.toString()
-                    binding.tvWisdom.text = response.body()?.wisdom.toString()
-                    binding.tvCharisma.text = response.body()?.charisma.toString()
+                    binding.tvStrenghtValue.text= response.body()?.strength.toString()
+                    binding.tvDexterityValue.text= response.body()?.dexterity.toString()
+                    binding.tvConstitutionValue.text = response.body()?.constitution.toString()
+                    binding.tvIntelligenceValue.text = response.body()?.intelligence.toString()
+                    binding.tvWisdomValue.text = response.body()?.wisdom.toString()
+                    binding.tvCharismaValue.text = response.body()?.charisma.toString()
+
+
+                    println("----- $character ----")
+                    binding.edit.setOnClickListener {
+                        val intent = Intent(context, UpdateCharacter::class.java).apply {
+                            putExtra("alignment", character.alignment)
+                            // putExtra("campaign", character.campaign)
+                            putExtra("charisma", character.charisma)
+                            putExtra("classeName", character.classe.name)
+                            putExtra("constitution", character.constitution)
+                            putExtra("description", character.description)
+                            putExtra("dexterity", character.dexterity)
+                            putExtra("experience", character.experience)
+                            putExtra("id", character.id)
+                            putExtra("intelligence", character.intelligence)
+                            //putExtra("inventory", character.inventory)
+                            putExtra("level", character.level)
+                            putExtra("name", character.name)
+                            putExtra("raceName", character.race.name)
+                            //putExtra("spells", character.spells)
+                            putExtra("strength", character.strength)
+                            //putExtra("user", character.user)
+                            putExtra("wisdom", character.wisdom)
+                        }
+
+
+                        println("Go to ")
+                        startActivity(intent)
+                        activity!!.finish()
+                    }
+
 
                 }else{
                     println("---> ${response.errorBody()}")
@@ -73,7 +107,6 @@ class ViewCharacter_Global : Fragment() {
             }
 
         })
-
         binding.cancel.setOnClickListener {
                 activity!!.finish()
         }

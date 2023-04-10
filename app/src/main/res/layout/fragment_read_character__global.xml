@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/color_bg_2"
-    tools:context=".character.creation.CreateCharacter_Global"
+    tools:context=".character.update.UpdateCharacter_Global"
     android:theme="@style/Theme.LunaRP.Page">
 
     <LinearLayout
@@ -32,7 +32,7 @@
 
 
             <Button
-                android:id="@+id/next"
+                android:id="@+id/edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -115,7 +115,15 @@
                         android:id="@+id/tv_strenght"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="For."
+                        android:text="Force"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_strenght_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -130,7 +138,15 @@
                         android:id="@+id/tv_intelligence"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Int."
+                        android:text="Intelligence"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_intelligence_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -152,7 +168,15 @@
                         android:id="@+id/tv_dexterity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dex."
+                        android:text="Dexterité"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_dexterity_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -168,6 +192,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sagesse"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_wisdom_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -188,7 +220,15 @@
                         android:id="@+id/tv_constitution"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cons."
+                        android:text="Constitution"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_constitution_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
                         android:textSize="16sp" />
 
                 </LinearLayout>
@@ -204,6 +244,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Charisme"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/tv_charisma_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
                         android:textSize="16sp" />
 
                 </LinearLayout>

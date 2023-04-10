@@ -5,6 +5,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface CharacterInterface {
@@ -19,4 +20,7 @@ interface CharacterInterface {
 
     @POST("characters/delete")
     fun deleteCharacter(@Body character:CharacterDelete) : Call<Any>
+
+    @POST("characters/update")
+    fun updateCharacter(@Body character: CharacterUpdate) : Call<Any>
 }

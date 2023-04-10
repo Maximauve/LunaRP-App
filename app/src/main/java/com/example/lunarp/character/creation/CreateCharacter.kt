@@ -19,7 +19,7 @@ class CreateCharacter : AppCompatActivity() {
         val viewPager = binding.viewPager
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(CreateCharacter_Global(), "Global")
+        adapter.addFragment(UpdateCharacter_Global(), "Global")
 
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)

@@ -30,6 +30,26 @@ data class CharacterBean(
     val wisdom: Int
 )
 
+data class CharacterUpdate(
+    val id: Int,
+    val alignment: String,
+    val campaign: List<Any>?,
+    val charisma: Int,
+    val classe: Int,
+    val constitution: Int,
+    val description: String,
+    val dexterity: Int,
+    val experience: Int,
+    val intelligence: Int,
+    val inventory: List<Int>?,
+    val level: Int,
+    val name: String,
+    val race: Int,
+    val spells: List<Int>,
+    val strength: Int,
+    val wisdom: Int
+)
+
 data class CharacterClassItem(
     val alignment: String,
     val charisma: Int,

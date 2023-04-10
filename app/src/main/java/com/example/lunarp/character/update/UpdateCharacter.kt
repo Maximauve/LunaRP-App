@@ -1,28 +1,31 @@
-package com.example.lunarp.character.read
+package com.example.lunarp.character.update
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.lunarp.R
 import com.example.lunarp.ViewPagerAdapter
-import com.example.lunarp.databinding.ActivityViewCharacterBinding
+import com.example.lunarp.character.creation.UpdateCharacter_Global
+import com.example.lunarp.databinding.ActivityTabCharacterBinding
 import com.google.android.material.tabs.TabLayout
 
-class ViewCharacter : AppCompatActivity() {
+class UpdateCharacter : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_view_character)
-        println("Extras here : !!! ${intent.extras?.get("itemId")}!!!")
+        setContentView(R.layout.activity_tab_character)
 
-        var binding = ActivityViewCharacterBinding.inflate(layoutInflater)
+        var binding = ActivityTabCharacterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val tabs: TabLayout = binding.tabsCreate
         val viewPager = binding.viewPager
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(ViewCharacter_Global(), "Global")
+        adapter.addFragment(UpdateCharacter_Global(), "Global")
 
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
+
+
+
     }
 }

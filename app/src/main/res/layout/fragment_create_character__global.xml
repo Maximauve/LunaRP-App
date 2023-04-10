@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/color_bg_2"
-    tools:context=".character.creation.CreateCharacter_Global"
+    tools:context=".character.creation.UpdateCharacter_Global"
     android:theme="@style/Theme.LunaRP.Page">
 
     <LinearLayout
@@ -137,7 +137,7 @@
                         android:id="@+id/tv_strenght"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="For."
+                        android:text="Force"
                         android:textSize="12dp" />
 
                     <NumberPicker
@@ -160,7 +160,7 @@
                         android:id="@+id/tv_intelligence"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Int."
+                        android:text="Intelligence"
                         android:textSize="12dp" />
 
                     <NumberPicker
@@ -189,7 +189,7 @@
                         android:id="@+id/tv_dexterity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dex."
+                        android:text="Dextérité"
                         android:textSize="12dp" />
 
                     <NumberPicker
@@ -240,7 +240,7 @@
                         android:id="@+id/tv_constitution"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cons."
+                        android:text="Constitution"
                         android:textSize="12dp" />
 
                     <NumberPicker

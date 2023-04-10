@@ -47,6 +47,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity
+            android:name=".character.update.UpdateCharacter"
+            android:label="Update Character">
+        </activity>
     </application>
 
 </manifest>
