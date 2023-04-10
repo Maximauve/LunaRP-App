@@ -5,6 +5,7 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface CharacterInterface {
     @POST("characters/create")
@@ -12,4 +13,10 @@ interface CharacterInterface {
 
     @GET("characters")
     fun getAll():Call<List<Character>>
+
+    @GET("characters/{id}")
+    fun getOne(@Path("id") id: String): Call<Character>
+
+    @POST("characters/delete")
+    fun deleteCharacter(@Body character:CharacterDelete) : Call<Any>
 }

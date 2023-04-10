@@ -13,9 +13,7 @@ import com.example.lunarp.MainActivity
 import com.example.lunarp.RequestUtils
 import com.example.lunarp.character.*
 import com.example.lunarp.character.creation.CreateCharacter
-import com.example.lunarp.classes.ClassesClassItem
 import com.example.lunarp.databinding.FragmentCharacterBinding
-import com.example.lunarp.user.UserInterface
 import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,16 +24,18 @@ private const val ARG_PARAM2 = "param2"
 
 class CharacterFragment : Fragment() {
 
+    //Ma gestion des données
+    val model by lazy { ViewModelProvider(this)[CharacterViewModel::class.java] }
+    public lateinit var adapter: CharacterListAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         var binding = FragmentCharacterBinding.inflate(layoutInflater)
-        //Ma gestion des données
-        val model by lazy { ViewModelProvider(this)[CharacterViewModel::class.java] }
 
-        var adapter = CharacterListAdapter(activity as MainActivity)
-
+        adapter = CharacterListAdapter(activity as MainActivity, MainActivity())
+        adapter.fragment = this
         binding.rv.adapter = adapter
         binding.rv.layoutManager = GridLayoutManager(context,1)
 
@@ -47,6 +47,16 @@ class CharacterFragment : Fragment() {
             val create = Intent(requireContext() , CreateCharacter::class.java )
             startActivity(create)
         }
+
+        updateList()
+
+
+        // Inflate the layout for this fragment
+        //return inflater.inflate(R.layout.fragment_character, container, false)
+        return binding.root
+    }
+    fun updateList() {
+        model.data.clear() // Clear the old list data
 
         var retrofit = RequestUtils.retrofitBase.create(CharacterInterface::class.java)
         val retrofitData= retrofit.getAll()
@@ -77,9 +87,5 @@ class CharacterFragment : Fragment() {
             }
 
         })
-
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_character, container, false)
-        return binding.root
     }
 }

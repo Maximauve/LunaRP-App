@@ -15,14 +15,14 @@ import org.json.JSONObject
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val URL_API_HOME =  "http://192.168.1.60:3000/"
-const val URL_API_YNOV =  "http://10.33.3.236:3000/"
+const val URL_API_HOME =  "http://192.168.1.116:3000/"
+const val URL_API_YNOV =  "http://10.33.16.239:3000/"
 const val URL_API_TOTO = "http://toto.gouv.fr:3000/"
 const val URL_API_2 = "http://10.0.0.2:3000"
 
 object RequestUtils {
     fun getURL_API() : String{
-        return URL_API_YNOV
+        return URL_API_HOME
     }
 
     /*val retrofitBase = Retrofit.Builder()

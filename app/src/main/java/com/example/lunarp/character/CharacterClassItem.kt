@@ -7,6 +7,10 @@ import com.example.lunarp.races.RaceClassItem
 import com.example.lunarp.user.User
 import com.example.lunarp.user.UserClassItem
 
+data class CharacterDelete(
+    val id : Int
+)
+
 data class CharacterBean(
     val alignment: String,
     val campaign: List<Any>?,
