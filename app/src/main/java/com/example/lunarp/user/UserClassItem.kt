@@ -18,7 +18,9 @@ data class UserClassItem(
     val role: String,
     val username: String,
     val token : String,
-    val password: String
+    val password: String,
+    val characters: Array<com.example.lunarp.character.Character>
+
 )
 
 data class User (

@@ -1,13 +1,14 @@
-package com.example.lunarp.character.creation
+package com.example.lunarp.character.update
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.lunarp.R
 import com.example.lunarp.ViewPagerAdapter
+import com.example.lunarp.character.creation.UpdateCharacter_Global
 import com.example.lunarp.databinding.ActivityTabCharacterBinding
 import com.google.android.material.tabs.TabLayout
 
-class CreateCharacter : AppCompatActivity() {
+class UpdateCharacter : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tab_character)
@@ -23,6 +24,7 @@ class CreateCharacter : AppCompatActivity() {
 
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
+
 
 
     }

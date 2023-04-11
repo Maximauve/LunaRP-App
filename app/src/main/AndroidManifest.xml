@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".character.read.View_character"
+            android:name=".character.read.ViewCharacter"
             android:exported="false" />
         <activity
             android:name=".dices"
@@ -47,6 +47,10 @@
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
+        </activity>
+        <activity
+            android:name=".character.update.UpdateCharacter"
+            android:label="Update Character">
         </activity>
     </application>
 
