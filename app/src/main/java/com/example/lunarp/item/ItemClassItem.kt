@@ -10,3 +10,7 @@ data class ItemClassItem(
     val price: Int,
     val regeneration: Int
 )
+data class Inventory(
+    val id: Int,
+    val quantity: Int
+)

@@ -1,13 +1,15 @@
 package com.example.lunarp.character
 
-import com.example.lunarp.classes.ClassesClassItem
-import com.example.lunarp.user.UserClassItem
-import com.example.lunarp.user.UserRegisterClassItem
+
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface CharacterInterface {
     @POST("characters/create")
-    fun createCharacter(@Body user : CharacterClassItem): Call<CharacterClassItem>
+    fun createCharacter(@Body character: CharacterBean): Call<Any>
+
+    @GET("characters")
+    fun getAll():Call<List<Character>>
 }

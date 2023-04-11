@@ -3,7 +3,6 @@ package com.example.lunarp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.se.omapi.Session
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -51,7 +50,7 @@ class Login : AppCompatActivity() {
                         val errorStr = response.errorBody()?.string()
                         if (response.isSuccessful){
                             println("---> ${response.body()}")
-                            SessionManager.logIn(userMail, password, response.body()?.token ?: "")
+                            SessionManager.logIn(response.body(), response.body()?.token ?: "")
                             startActivity(main)
                             finish()
                         }

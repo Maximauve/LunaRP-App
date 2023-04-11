@@ -8,10 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import com.example.lunarp.R
-import com.example.lunarp.RequestUtils
-import com.example.lunarp.SessionManager
+import com.example.lunarp.*
 import com.example.lunarp.character.CharacterClassItem
+import com.example.lunarp.character.CharacterBean
 import com.example.lunarp.character.CharacterInterface
 import com.example.lunarp.classes.ClassInterface
 import com.example.lunarp.classes.ClassesClassItem
@@ -23,6 +22,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.create
+import android.content.Intent as Intent
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,6 +51,8 @@ class CreateCharacter_Global : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        super.onCreate(savedInstanceState)
         val binding = FragmentCreateCharacterGlobalBinding.inflate(layoutInflater)
 
         /*
@@ -177,6 +179,9 @@ class CreateCharacter_Global : Fragment() {
         charisma.maxValue = 20
         charisma.value = 10
 
+        binding.cancel.setOnClickListener {
+            activity!!.finish()
+        }
 
         binding.next.setOnClickListener  {view ->
             println("------------------> *Entries: ")
@@ -202,23 +207,64 @@ class CreateCharacter_Global : Fragment() {
 
             var classSelectedID = classes.find { it.name == classSelected }
             var raceSelectedID = races.find {it.name == raceSelected}
-            var characterCreated = CharacterClassItem(alignment.toString(), chaValue, classSelectedID?.id ?: 0,
-                conValue, description, dexValue, 0, intValue, listOf(1, 1), 1, name.toString(), raceSelectedID?.id?:0,
+            var characterCreate = CharacterBean(alignment = alignment.toString(),
+                campaign= listOf(),
+                charisma= chaValue,
+                classe= classSelectedID!!.id,
+                constitution= conValue,
+                description= "Ceci est peut être un test",
+                dexterity= dexValue,
+                experience=0,
+                intelligence= intValue,
+                inventory = listOf(),
+                level=1,
+                name= name.toString(),
+                race= raceSelectedID!!.id,
+                spells= listOf(),
+                strength= strValue,
+                wisdom= wisValue
+            )
+
+            /*var characterTest = object{
+                val alignment = "Neutre"
+                val charisma= 10
+                val classe = 1
+                val constitution= conValue
+                val description= "Ceci est peut être un test"
+                val dexterity= dexValue
+                val experience=0
+                val intelligence= intValue
+                val inventory = listOf()
+                val level=1
+                val name= name.toString()
+                val race= raceSelectedID!!.id
+                val spells= listOf()
+                val strength= strValue
+                val wisdom= wisValue
+
+            }*/
+
+            var characterCreated = CharacterClassItem(alignment.toString(), chaValue, classSelectedID!!.id,
+                conValue, description, dexValue, 0, intValue, listOf(1, 1), 1, name.toString(), raceSelectedID!!.id,
                 listOf(), strValue, SessionManager.userId, wisValue)
 
             var retrofitCharacter = RequestUtils.retrofitBase.create<CharacterInterface>()
-            var retrofitDataCharacter = retrofitCharacter.createCharacter(characterCreated)
+            println("Character create : $characterCreate")
+            var retrofitDataCharacter = retrofitCharacter.createCharacter(characterCreate)
             println("::::::Creating a new CHARACTER:::::")
-            retrofitDataCharacter.enqueue(object: Callback<CharacterClassItem>{
+            /*retrofitDataCharacter.enqueue(object: Callback<Character>{
                 override fun onResponse(
-                    call: Call<CharacterClassItem>,
-                    response: Response<CharacterClassItem>
+                    call: Call<Character>,
+                    response: Response<Character>
                 ) {
                     val errorStr = response.errorBody()?.string()
                     if (response.isSuccessful){
                         println("---> ${response.body()}")
+                        startActivity(Intent(requireActivity(), MainActivity::class.java))
+                        activity?.finish()
                     }else{
-                        println("Character response is not a succes")
+                        println("Character response is not a succes : ${response.code()}")
+                        println("$errorStr")
                         if (response.code()==500){
                             Snackbar.make(view, "Nom du personnage déjà existant", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show()
@@ -226,8 +272,40 @@ class CreateCharacter_Global : Fragment() {
                     }
                 }
 
-                override fun onFailure(call: Call<CharacterClassItem>, t: Throwable) {
+                override fun onFailure(
+                    call: Call<Character>,
+                    t: Throwable
+                ) {
                     println("::::::Create Character fail:::::")
+                    Log.d("ActivityCreateCharacterBinding", "onfailure: "+ t.message )
+                }
+
+            })*/
+            retrofitDataCharacter.enqueue(object: Callback<Any>{
+                override fun onResponse(
+                    call: Call<Any>,
+                    response: Response<Any>
+                ) {
+                    val errorStr = response.errorBody()?.string()
+                    if (response.isSuccessful){
+                        println("---> ${response.body()}")
+                        startActivity(Intent(requireActivity(), MainActivity::class.java))
+                        activity?.finish()
+                    }else{
+                        println("Character response is not a succes : ${response.code()}")
+                        println("$errorStr")
+                        if (response.code()==500){
+                            Snackbar.make(view, "Nom du personnage déjà existant", Snackbar.LENGTH_LONG)
+                                .setAction("Action", null).show()
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<Any>, t: Throwable) {
+                    println("::::::Create Character fail:::::")
+                    if (t.message?.contains("xpected an int but was BEGIN_OBJECT at line 1 column 198 path \$.user") == true){
+                        println("AFFICHER LA PAGE SPELL")
+                    }
                     Log.d("ActivityCreateCharacterBinding", "onfailure: "+ t.message )
                 }
 

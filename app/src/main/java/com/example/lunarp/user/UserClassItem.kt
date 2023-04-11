@@ -12,11 +12,18 @@ data class UserLoginClassItem(
     val email: String,
     val password: String,
 )
-
 data class UserClassItem(
     val email: String,
     val id : Int,
     val role: String,
     val username: String,
-    val token : String
+    val token : String,
+    val password: String
 )
+
+data class User (
+    val id: Int,
+    val name: String,
+    val email: String,
+    val role: String,
+);
