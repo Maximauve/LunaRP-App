@@ -183,31 +183,31 @@ class UpdateCharacter_Global : Fragment() {
         val strength = binding.nbpStrenght
         strength.minValue = 1
         strength.maxValue = 20
-        strength.value= activity!!.intent.extras?.get("strength") as Int
+        strength.value= activity?.intent?.extras?.get("strength") as? Int ?: 10
         val dexterity = binding.nbpDexterity
         dexterity.minValue = 1
         dexterity.maxValue = 20
-        dexterity.value = activity!!.intent.extras?.get("dexterity") as Int
+        dexterity.value = activity?.intent?.extras?.get("dexterity") as? Int ?: 10
         dexterity.invalidate()
         val constitution = binding.nbpConstitution
         constitution.minValue = 1
         constitution.maxValue = 20
-        constitution.value = activity!!.intent.extras?.get("constitution") as Int
+        constitution.value = activity?.intent?.extras?.get("constitution") as? Int ?:10
         constitution.invalidate()
         val wisdom = binding.nbpWisdom
         wisdom.minValue = 1
         wisdom.maxValue = 20
-        wisdom.value = activity!!.intent.extras?.get("wisdom") as Int
+        wisdom.value = activity?.intent?.extras?.get("wisdom") as? Int ?: 10
         wisdom.invalidate()
         val intelligence = binding.nbpIntelligence
         intelligence.minValue = 1
         intelligence.maxValue = 20
-        intelligence.value = activity!!.intent.extras?.get("intelligence") as Int
+        intelligence.value = activity?.intent?.extras?.get("intelligence") as? Int ?: 10
         intelligence.invalidate()
         val charisma = binding.nbpCharisma
         charisma.minValue = 1
         charisma.maxValue = 20
-        charisma.value = activity!!.intent.extras?.get("charisma") as Int
+        charisma.value = activity?.intent?.extras?.get("charisma") as? Int ?: 10
         charisma.invalidate()
 
 

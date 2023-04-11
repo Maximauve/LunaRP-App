@@ -9,6 +9,7 @@ object SessionManager {
     public var userId : Int = -1;
     public  var userToken: String = ""
     public var userRole: String = ""
+    public var characters : Array<com.example.lunarp.character.Character>? = null
 
     fun getUser(): User {
         return User(userId, username, userMail, userRole)
@@ -18,6 +19,7 @@ object SessionManager {
         this.username = user.username
         this.userRole = user!!.role
         this.userToken = userToken
+        this.characters = user.characters
         RequestUtils.reloadClient()
         // ssearch with API the ID of the user
     }
