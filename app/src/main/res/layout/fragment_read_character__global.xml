@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/color_bg_2"
-    tools:context=".character.creation.UpdateCharacter_Global"
+    tools:context=".character.update.UpdateCharacter_Global"
     android:theme="@style/Theme.LunaRP.Page">
 
     <LinearLayout
@@ -27,24 +27,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:text="Annuler"
+                android:text="Listes des persos"
                 tools:layout_editor_absoluteX="16dp" />
 
 
             <Button
-                android:id="@+id/next"
+                android:id="@+id/edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:text="Suivant"
+                android:text="Editer"
                 tools:layout_editor_absoluteX="16dp" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/et_name"
+        <TextView
+            android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:hint="Name"
             android:textAlignment="viewStart"
             android:textColor="@color/color_light"
@@ -57,68 +58,45 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tv_select_race"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_race"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Race"
-                android:textSize="12dp" />
+                android:editable="false"
+                android:hint="RACE"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_light"
+                android:textColorHint="@color/color_light"
+                android:textSize="14sp" />
 
-            <Spinner
-                android:id="@+id/spinner_race"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_class"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/color_light"
-                android:popupBackground="@color/color_bg_3" />
+                android:layout_weight="1"
+                android:editable="false"
+                android:hint="Class"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_light"
+                android:textColorHint="@color/color_light"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_alignment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:editable="false"
+                android:hint="Alignement"
+                android:textAlignment="viewStart"
+                android:textColor="@color/color_light"
+                android:textColorHint="@color/color_light"
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_select_class"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Classe"
-                android:textSize="12dp" />
-
-            <Spinner
-                android:id="@+id/spinner_class"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/color_light"
-                android:popupBackground="@color/color_bg_3" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tv_select_alignment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Alignement"
-                android:textSize="12dp" />
-
-            <Spinner
-                android:id="@+id/spinner_alignment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/color_light"
-                android:popupBackground="@color/color_bg_3" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -138,15 +116,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Force"
-                        android:textSize="12dp" />
+                        android:textSize="16sp" />
 
-                    <NumberPicker
-                        android:id="@+id/nbp_strenght"
-                        android:layout_width="wrap_content"
-                        android:layout_height="75dp"
-                        android:scaleX="0.75"
-                        android:scaleY="0.75"
-                        android:scrollbarSize="4dp" />
+                    <TextView
+                        android:id="@+id/tv_strenght_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -161,14 +139,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Intelligence"
-                        android:textSize="12dp" />
+                        android:textSize="16sp" />
 
-                    <NumberPicker
-                        android:id="@+id/nbp_intelligence"
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tv_intelligence_value"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:scaleX="0.75"
-                        android:scaleY="0.75" />
+                        android:inputType="number"
+                        android:text="0"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -189,16 +168,16 @@
                         android:id="@+id/tv_dexterity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dextérité"
-                        android:textSize="12dp" />
+                        android:text="Dexterité"
+                        android:textSize="16sp" />
 
-                    <NumberPicker
-                        android:id="@+id/nbp_dexterity"
-                        android:layout_width="wrap_content"
-                        android:layout_height="75dp"
-                        android:background="#00000000"
-                        android:scaleX="0.75"
-                        android:scaleY="0.75" />
+                    <TextView
+                        android:id="@+id/tv_dexterity_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -213,14 +192,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sagesse"
-                        android:textSize="12dp" />
+                        android:textSize="16sp" />
 
-                    <NumberPicker
-                        android:id="@+id/nbp_wisdom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="75dp"
-                        android:scaleX="0.75"
-                        android:scaleY="0.75" />
+                    <TextView
+                        android:id="@+id/tv_wisdom_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -241,15 +221,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Constitution"
-                        android:textSize="12dp" />
+                        android:textSize="16sp" />
 
-                    <NumberPicker
-                        android:id="@+id/nbp_constitution"
-                        android:layout_width="wrap_content"
-                        android:layout_height="75dp"
-                        android:scaleX="0.75"
-                        android:scaleY="0.75"
-                        android:scrollbarSize="1dp" />
+                    <TextView
+                        android:id="@+id/tv_constitution_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -264,14 +244,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Charisme"
-                        android:textSize="12dp" />
+                        android:textSize="16sp" />
 
-                    <NumberPicker
-                        android:id="@+id/nbp_charisma"
-                        android:layout_width="wrap_content"
-                        android:layout_height="75dp"
-                        android:scaleX="0.75"
-                        android:scaleY="0.75" />
+                    <TextView
+                        android:id="@+id/tv_charisma_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </LinearLayout>

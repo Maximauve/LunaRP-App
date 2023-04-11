@@ -13,7 +13,6 @@ import com.example.lunarp.databinding.ActivityMainBinding
 import com.example.lunarp.fragment.CampaignFragment
 import com.example.lunarp.fragment.CharacterFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 
 private const val MENU_ID_SETTINGS= 1
@@ -70,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        var adapterCharacter = CharacterListAdapter(this)
+        var adapterCharacter = CharacterListAdapter(this, MainActivity())
         val currentFragment = supportFragmentManager
             .findFragmentByTag("android:switcher:" + viewPager.id + ":" + tabs.selectedTabPosition)
         if (currentFragment is CharacterFragment) {

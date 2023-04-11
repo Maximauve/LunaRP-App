@@ -83,6 +83,7 @@
             android:id="@+id/rv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            tools:itemCount="2"
             tools:listitem="@layout/row_character">
 
         </androidx.recyclerview.widget.RecyclerView>

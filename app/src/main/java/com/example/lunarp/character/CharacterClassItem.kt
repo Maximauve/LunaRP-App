@@ -7,7 +7,31 @@ import com.example.lunarp.races.RaceClassItem
 import com.example.lunarp.user.User
 import com.example.lunarp.user.UserClassItem
 
+data class CharacterDelete(
+    val id : Int
+)
+
 data class CharacterBean(
+    val alignment: String,
+    val campaign: List<Any>?,
+    val charisma: Int,
+    val classe: Int,
+    val constitution: Int,
+    val description: String,
+    val dexterity: Int,
+    val experience: Int,
+    val intelligence: Int,
+    val inventory: List<Int>?,
+    val level: Int,
+    val name: String,
+    val race: Int,
+    val spells: List<Int>,
+    val strength: Int,
+    val wisdom: Int
+)
+
+data class CharacterUpdate(
+    val id: Int,
     val alignment: String,
     val campaign: List<Any>?,
     val charisma: Int,
