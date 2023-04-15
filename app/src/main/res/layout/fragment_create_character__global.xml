@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/color_bg_2"
-    tools:context=".character.creation.UpdateCharacter_Global"
-    android:theme="@style/Theme.LunaRP.Page">
+    android:layout_height="match_parent"
+    android:background="@drawable/istockphoto_1128211614_170667a"
+    android:theme="@style/Theme.LunaRP.Page"
+    tools:context=".character.creation.UpdateCharacter_Global">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_bg_2"
+        android:layout_margin="10dp"
         android:orientation="vertical"
         android:weightSum="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
 
@@ -25,7 +26,9 @@
                 android:id="@+id/cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/color_bg_1"
+                android:textColor="@color/color_light"
                 android:layout_weight="1"
                 android:text="Annuler"
                 tools:layout_editor_absoluteX="16dp" />
@@ -35,34 +38,64 @@
                 android:id="@+id/next"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/color_accent"
+                android:textColor="@color/color_light"
                 android:layout_weight="1"
-                android:text="Suivant"
+                android:text="VALIDER"
                 tools:layout_editor_absoluteX="16dp" />
         </LinearLayout>
-
-        <EditText
-            android:id="@+id/et_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Name"
-            android:textAlignment="viewStart"
-            android:textColor="@color/color_light"
-            android:textColorHint="@color/color_light"
-            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="108dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Nom"
+                android:textSize="20sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/et_name"
+                    android:layout_width="326dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:hint="Mon personnage"
+                    android:inputType="textShortMessage"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/color_light"
+                    android:textColorHint="@color/color_light"
+                    android:textSize="20sp"
+                    android:translationY="-10dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_select_race"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Race"
-                android:textSize="12dp" />
+                android:textSize="20sp" />
 
             <Spinner
                 android:id="@+id/spinner_race"
@@ -75,15 +108,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_select_class"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Classe"
-                android:textSize="12dp" />
+                android:textSize="20sp" />
 
             <Spinner
                 android:id="@+id/spinner_class"
@@ -96,15 +130,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tv_select_alignment"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Alignement"
-                android:textSize="12dp" />
+                android:textSize="20sp" />
 
             <Spinner
                 android:id="@+id/spinner_alignment"
@@ -112,48 +147,23 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/color_light"
                 android:popupBackground="@color/color_bg_3" />
-
-
         </LinearLayout>
 
-        <LinearLayout
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
 
-            <LinearLayout
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_strenght"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Force"
-                        android:textSize="12dp" />
-
-                    <NumberPicker
-                        android:id="@+id/nbp_strenght"
-                        android:layout_width="wrap_content"
-                        android:layout_height="75dp"
-                        android:scaleX="0.75"
-                        android:scaleY="0.75"
-                        android:scrollbarSize="4dp" />
-
-                </LinearLayout>
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <TextView
@@ -161,7 +171,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Intelligence"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <NumberPicker
                         android:id="@+id/nbp_intelligence"
@@ -172,17 +182,66 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-            <LinearLayout
+                    <TextView
+                        android:id="@+id/tv_strenght"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Force"
+                        android:textSize="12sp" />
+
+                    <NumberPicker
+                        android:id="@+id/nbp_strenght"
+                        android:layout_width="wrap_content"
+                        android:layout_height="75dp"
+                        android:scaleX="0.75"
+                        android:scaleY="0.75"
+                        android:scrollbarSize="4dp" />
+
+                </LinearLayout>
+            </TableRow>
+
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_wisdom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sagesse"
+                        android:textSize="12sp" />
+
+                    <NumberPicker
+                        android:id="@+id/nbp_wisdom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="75dp"
+                        android:scaleX="0.75"
+                        android:scaleY="0.75" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <TextView
@@ -190,7 +249,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dextérité"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <NumberPicker
                         android:id="@+id/nbp_dexterity"
@@ -201,39 +260,42 @@
                         android:scaleY="0.75" />
 
                 </LinearLayout>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_wisdom"
+                        android:id="@+id/tv_charisma"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Sagesse"
-                        android:textSize="12dp" />
+                        android:text="Charisme"
+                        android:textSize="12sp" />
 
                     <NumberPicker
-                        android:id="@+id/nbp_wisdom"
+                        android:id="@+id/nbp_charisma"
                         android:layout_width="wrap_content"
                         android:layout_height="75dp"
                         android:scaleX="0.75"
                         android:scaleY="0.75" />
 
                 </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
+                    android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <TextView
@@ -241,7 +303,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Constitution"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
 
                     <NumberPicker
                         android:id="@+id/nbp_constitution"
@@ -252,44 +314,37 @@
                         android:scrollbarSize="1dp" />
 
                 </LinearLayout>
+            </TableRow>
 
-                <LinearLayout
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:boxBackgroundColor="@color/color_light"
+                app:counterTextColor="@color/color_light"
+                app:helperTextTextColor="@color/color_light"
+                app:hintTextColor="@color/color_light"
+                app:placeholderTextColor="@color/color_light"
+                app:prefixTextColor="@color/color_light"
+                app:suffixTextColor="@color/color_light">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_charisma"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Charisme"
-                        android:textSize="12dp" />
-
-                    <NumberPicker
-                        android:id="@+id/nbp_charisma"
-                        android:layout_width="wrap_content"
-                        android:layout_height="75dp"
-                        android:scaleX="0.75"
-                        android:scaleY="0.75" />
-
-                </LinearLayout>
-            </LinearLayout>
-
+                    android:background="@drawable/text_zone"
+                    android:hint="Description..."
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/color_light"
+                    android:textColorHighlight="@color/color_light" />
+            </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/color_bg_2"
-                android:hint="Description..."
-                android:textColor="@color/color_light" />
-        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
