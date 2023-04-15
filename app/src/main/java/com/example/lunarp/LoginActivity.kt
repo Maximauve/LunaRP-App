@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.lunarp.character.Character
+import com.example.lunarp.character.CharacterInterface
 import com.example.lunarp.user.UserClassItem
 import com.example.lunarp.user.UserInterface
 import com.example.lunarp.user.UserLoginClassItem
@@ -49,10 +51,8 @@ class Login : AppCompatActivity() {
                     override fun onResponse(call: Call<UserClassItem>, response: Response<UserClassItem>) {
                         val errorStr = response.errorBody()?.string()
                         if (response.isSuccessful){
-                            println("---> ${response.body()}")
+                            println("|---> ${response.body()}")
                             SessionManager.logIn(response.body(), response.body()?.token ?: "")
-                            startActivity(main)
-                            finish()
                         }
                         when (response.code()) {
                             400 ->{
@@ -69,6 +69,37 @@ class Login : AppCompatActivity() {
                     }
                 })
 
+                var retrofitCharacters = RequestUtils.retrofitBase.create(CharacterInterface::class.java)
+                val retrofitDataCharacters= retrofitCharacters.getAll()
+                retrofitDataCharacters.enqueue(object: Callback<List<Character>> {
+                    override fun onResponse(
+                        call: Call<List<Character>>,
+                        response: Response<List<Character>>
+                    ) {
+                        if (response.isSuccessful){
+                            println("--> ${response.body()}")
+                            response.body()?.forEach {
+                                if (it.user.email == SessionManager.userMail) {
+                                    SessionManager.characters += it
+                                    SessionManager.userId = it.user.id
+                                }else {
+                                    println("You are : ${SessionManager.userMail} but my owner is ${it.user.email}")
+                                }
+                            }
+                            startActivity(main)
+                            finish()
+                        }else{
+                            println("---> ${response.errorBody()}")
+                        }
+                        //organiser les données récupérées.
+                        Log.d("CharacterFragment", "Number of characters: ${SessionManager.characters.size}")
+                    }
+                    override fun onFailure(call: Call<List<Character>>, t: Throwable) {
+                        println("::::::Get characters failure:::::")
+                        Log.d("ActivityCharacterBinding", "onfailure: "+ t.message )
+                    }
+
+                })
                 ///
             }
         }
