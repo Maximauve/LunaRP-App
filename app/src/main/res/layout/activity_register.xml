@@ -7,36 +7,71 @@
     android:layout_height="match_parent"
     android:theme="@style/Theme.LunaRP.Page"
     tools:context=".Register">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clickable="false"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/istockphoto_1128211614_170667a" />
+
     <LinearLayout
         android:id="@+id/ll_main_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:background="@color/color_bg_1"
-        android:padding="25dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/rounded_top"
+        android:gravity="fill"
+        android:orientation="vertical"
+        android:padding="40dp"
+        android:showDividers="middle"
+        android:theme="@style/Theme.LunaRP.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:padding="30dp"
-            android:textColor="@color/color_accent"
-            android:text="S'enregistrer"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="S'enregistrer"
+                android:textColor="@color/color_accent"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
         <EditText
             android:id="@+id/et_email"
-            android:hint="Mail"
-            android:textColor="@color/color_light"
-            android:textColorHint="@color/color_light"
-            android:textAlignment="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:hint="Email"
+            android:textAlignment="viewStart"
+            android:textColor="@color/color_light"
+            android:textColorHint="@color/color_light" />
 
         <EditText
             android:id="@+id/et_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:hint="Pseudo"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
             android:textColor="@color/color_light"
             android:textColorHint="@color/color_light" />
 
@@ -44,47 +79,67 @@
             android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:hint="Mot de passe"
             android:inputType="textPassword"
-            android:textAlignment="center"
+            android:paddingBottom="5dp"
+            android:textAlignment="viewStart"
             android:textColor="@color/color_light"
             android:textColorHint="@color/color_light" />
+
 
         <EditText
             android:id="@+id/et_confirm_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:hint="Confirmer le mot de passe"
             android:inputType="textPassword"
-            android:textAlignment="center"
+            android:paddingBottom="5dp"
+            android:textAlignment="viewStart"
             android:textColor="@color/color_light"
             android:textColorHint="@color/color_light" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:gravity="center"
-            android:padding="25dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="25dp">
 
             <Button
                 android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Valider"
-                android:textColorHint="@color/color_light"
-                android:textAllCaps="false"
+                android:textAllCaps="true"
+                android:textColor="@color/color_light"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 app:cornerRadius="50dp" />
-
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/link_login"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/color_accent"
-            android:layout_weight="0"
-            android:gravity="start|end"
-            android:text="J'ai déjà un compte" />
+            android:layout_height="match_parent"
+            android:gravity="bottom|start"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/link_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|start"
+                android:padding="10dp"
+                android:text="Déjà un compte ?"
+                android:textColor="@color/color_accent"
+                android:textSize="20sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
