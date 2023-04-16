@@ -52,7 +52,7 @@ class ViewCharacter_Global : Fragment() {
                 if (response.isSuccessful){
                     println("--> ${response.body()}")
                     character = response.body()!!
-                    binding.tvName.hint = "${response.body()?.name} lvl ${response.body()?.level}"
+                    binding.tvName.hint = "${response.body()?.name} Niv. ${response.body()?.level}"
                     binding.tvRace.text = response.body()?.race?.name
                     binding.tvClass.text = response.body()?.classe?.name
                     binding.tvAlignment.text = response.body()?.alignment
