@@ -22,7 +22,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d100"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice20"
@@ -31,27 +32,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="322dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:elevation="16dp"
-        android:focusable="true"
-        android:foregroundGravity="bottom"
-        android:visibility="invisible"
-        app:backgroundTint="@color/color_accent"
-        app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_dice12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="274dp"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:elevation="16dp"
@@ -61,7 +41,26 @@
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
         app:pressedTranslationZ="12dp"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/dice_d20"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_dice12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|end"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="16dp"
+        android:focusable="true"
+        android:foregroundGravity="bottom"
+        android:visibility="invisible"
+        app:backgroundTint="@color/color_accent"
+        app:fabSize="mini"
+        app:pressedTranslationZ="12dp"
+        tools:ignore="MissingConstraints"
+        app:srcCompat="@drawable/dice_d12"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice10"
@@ -70,8 +69,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="226dp"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:elevation="16dp"
@@ -80,7 +77,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d10"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice8"
@@ -89,8 +87,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="178dp"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:elevation="16dp"
@@ -99,7 +95,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d8"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice6"
@@ -108,8 +105,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="130dp"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:elevation="16dp"
@@ -118,7 +113,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d6"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice4"
@@ -127,8 +123,6 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="82dp"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:elevation="16dp"
@@ -137,7 +131,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d4"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_reset"
@@ -187,9 +182,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
         app:backgroundTint="@color/color_accent"
-        app:srcCompat="@drawable/twenty_sided_dice" />
+        app:srcCompat="@drawable/dice_d20" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
