@@ -73,7 +73,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d100"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice20"
@@ -92,7 +93,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d20"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice12"
@@ -111,7 +113,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d12"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice10"
@@ -130,7 +133,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d10"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice8"
@@ -149,7 +153,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d8"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice6"
@@ -168,7 +173,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d6"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_dice4"
@@ -187,7 +193,8 @@
         android:visibility="invisible"
         app:backgroundTint="@color/color_accent"
         app:fabSize="mini"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/dice_d4"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_reset"
@@ -240,6 +247,6 @@
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
         app:backgroundTint="@color/color_accent"
-        app:srcCompat="@drawable/twenty_sided_dice" />
+        app:srcCompat="@drawable/dice_d20" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
