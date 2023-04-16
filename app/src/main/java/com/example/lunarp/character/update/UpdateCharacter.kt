@@ -3,8 +3,8 @@ package com.example.lunarp.character.update
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.lunarp.R
+import com.example.lunarp.update.UpdateCharacter_Global
 import com.example.lunarp.ViewPagerAdapter
-import com.example.lunarp.character.creation.UpdateCharacter_Global
 import com.example.lunarp.databinding.ActivityTabCharacterBinding
 import com.google.android.material.tabs.TabLayout
 

@@ -42,7 +42,6 @@ class CharacterFragment : Fragment() {
         binding.rv.adapter = adapter
         binding.rv.layoutManager = GridLayoutManager(context,1)
 
-        println("HERE")
         binding.cardAddCharacter.setOnClickListener { view ->
             println("Have to add character")
             Snackbar.make(view, "Have to add character", Snackbar.LENGTH_LONG)
@@ -52,7 +51,7 @@ class CharacterFragment : Fragment() {
         }
 
         updateList()
-
+        println("Update end")
 
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_character, container, false)
@@ -61,8 +60,10 @@ class CharacterFragment : Fragment() {
     fun updateList() {
         model.data.clear() // Clear the old list data
 
+        println("Update Begin")
         SessionManager.characters?.forEach {
             model.data.add(it)
+            println(it)
         }
         //organiser les données récupérées.
         Log.d("CharacterFragment", "Number of characters: ${model.data.size}")

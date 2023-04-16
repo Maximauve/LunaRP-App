@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/istockphoto_1128211614_170667a"
     android:theme="@style/Theme.LunaRP.Page"
-    tools:context=".character.creation.CreateCharacter_Global">
+    tools:context=".character.update.UpdateCharacter__Global">
 
     <LinearLayout
         android:layout_width="match_parent"

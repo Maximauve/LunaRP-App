@@ -6,6 +6,7 @@ import com.example.lunarp.races.Race
 import com.example.lunarp.races.RaceClassItem
 import com.example.lunarp.user.User
 import com.example.lunarp.user.UserClassItem
+import java.lang.Character
 
 data class CharacterDelete(
     val id : Int

@@ -1,4 +1,4 @@
-package com.example.lunarp.character.creation
+package com.example.lunarp.update
 
 import android.os.Bundle
 import android.text.Editable
@@ -213,7 +213,9 @@ class UpdateCharacter_Global : Fragment() {
 
         binding.etName.performClick()
         binding.cancel.setOnClickListener {
-            activity!!.finish()
+            val intent = Intent(context, ViewCharacter::class.java)
+            intent.putExtra("itemId", activity!!.intent.extras?.get("id") as Int)
+            startActivity(intent)
         }
 
         binding.next.setOnClickListener  {view ->
@@ -275,6 +277,7 @@ class UpdateCharacter_Global : Fragment() {
                         val intent = Intent(context, ViewCharacter::class.java)
                         intent.putExtra("itemId", characterUpdate.id)
                         startActivity(intent)
+                        SessionManager.updateUser()
                         activity!!.finish()
                     }else{
                         println("Character response is not a succes : ${response.code()}")

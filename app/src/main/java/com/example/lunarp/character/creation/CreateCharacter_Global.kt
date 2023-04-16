@@ -236,6 +236,7 @@ class CreateCharacter_Global : Fragment() {
                     val errorStr = response.errorBody()?.string()
                     if (response.isSuccessful){
                         println("---> ${response.body()}")
+                        SessionManager.updateUser()
                         startActivity(Intent(requireActivity(), MainActivity::class.java))
                         activity?.finish()
                     }else{
