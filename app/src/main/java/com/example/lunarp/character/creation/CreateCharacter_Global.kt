@@ -238,8 +238,7 @@ class CreateCharacter_Global : Fragment() {
                     if (response.isSuccessful){
                         println("---> ${response.body()}")
 
-                        SessionManager.updateUser().also {
-                            startActivity(Intent(requireActivity(), MainActivity::class.java)) }
+                        startActivity(Intent(requireActivity(), MainActivity::class.java))
                         activity?.finish()
                     }else{
                         println("Character response is not a succes : ${response.code()}")
