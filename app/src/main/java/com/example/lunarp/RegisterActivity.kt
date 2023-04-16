@@ -91,6 +91,14 @@ class Register : AppCompatActivity() {
                                     }
                                 })
 
+                            }else {
+                                println("SIGN UP PB : $errorStr")
+                                when(response.code()){
+                                    409 -> {
+                                        Toast.makeText(this@Register, "Email déjà utilisé%22", Toast.LENGTH_LONG).show()
+
+                                    }
+                                }
                             }
                             when (response.code()){
                                 400 -> {

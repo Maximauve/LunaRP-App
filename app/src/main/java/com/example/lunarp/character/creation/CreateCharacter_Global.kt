@@ -179,6 +179,7 @@ class CreateCharacter_Global : Fragment() {
         charisma.value = 10
 
         binding.cancel.setOnClickListener {
+            startActivity(Intent(requireActivity(), MainActivity::class.java))
             activity!!.finish()
         }
 
@@ -198,7 +199,7 @@ class CreateCharacter_Global : Fragment() {
             var raceSelected = binding.spinnerRace.selectedItem
             var classSelected = binding.spinnerClass.selectedItem
             var name = binding.etName.text
-            var description = "Ceci est un test"
+            var description = binding.description
             var alignment = binding.spinnerAlignment.selectedItem
             println("Je me nomme $name, je suis un jeune $raceSelected " +
                     "qui veux devenir le meilleur $classSelected du monde. " +
@@ -211,7 +212,7 @@ class CreateCharacter_Global : Fragment() {
                 charisma= chaValue,
                 classe= classSelectedID!!.id,
                 constitution= conValue,
-                description= "Ceci est peut être un test",
+                description= description.toString(),
                 dexterity= dexValue,
                 experience=0,
                 intelligence= intValue,
@@ -236,8 +237,9 @@ class CreateCharacter_Global : Fragment() {
                     val errorStr = response.errorBody()?.string()
                     if (response.isSuccessful){
                         println("---> ${response.body()}")
-                        SessionManager.updateUser()
-                        startActivity(Intent(requireActivity(), MainActivity::class.java))
+
+                        SessionManager.updateUser().also {
+                            startActivity(Intent(requireActivity(), MainActivity::class.java)) }
                         activity?.finish()
                     }else{
                         println("Character response is not a succes : ${response.code()}")

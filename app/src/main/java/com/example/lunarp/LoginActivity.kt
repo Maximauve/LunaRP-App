@@ -53,6 +53,9 @@ class Login : AppCompatActivity() {
                         if (response.isSuccessful){
                             println("|---> ${response.body()}")
                             SessionManager.logIn(response.body(), response.body()?.token ?: "")
+
+                            startActivity(main)
+                            finish()
                         }
                         when (response.code()) {
                             400 ->{
@@ -67,38 +70,6 @@ class Login : AppCompatActivity() {
                     override fun onFailure(call: Call<UserClassItem>, t: Throwable) {
                         Log.d("LoginActivity", "onfailure: "+ t.message )
                     }
-                })
-
-                var retrofitCharacters = RequestUtils.retrofitBase.create(CharacterInterface::class.java)
-                val retrofitDataCharacters= retrofitCharacters.getAll()
-                retrofitDataCharacters.enqueue(object: Callback<List<Character>> {
-                    override fun onResponse(
-                        call: Call<List<Character>>,
-                        response: Response<List<Character>>
-                    ) {
-                        if (response.isSuccessful){
-                            println("--> ${response.body()}")
-                            response.body()?.forEach {
-                                if (it.user.email == SessionManager.userMail) {
-                                    SessionManager.characters += it
-                                    SessionManager.userId = it.user.id
-                                }else {
-                                    println("You are : ${SessionManager.userMail} but my owner is ${it.user.email}")
-                                }
-                            }
-                            startActivity(main)
-                            finish()
-                        }else{
-                            println("---> ${response.errorBody()}")
-                        }
-                        //organiser les données récupérées.
-                        Log.d("CharacterFragment", "Number of characters: ${SessionManager.characters.size}")
-                    }
-                    override fun onFailure(call: Call<List<Character>>, t: Throwable) {
-                        println("::::::Get characters failure:::::")
-                        Log.d("ActivityCharacterBinding", "onfailure: "+ t.message )
-                    }
-
                 })
                 ///
             }

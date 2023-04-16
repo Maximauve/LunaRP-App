@@ -16,7 +16,6 @@ import com.example.lunarp.MainActivity
 import com.example.lunarp.R
 import com.example.lunarp.RequestUtils
 import com.example.lunarp.character.read.ViewCharacter
-import com.example.lunarp.databinding.FragmentCharacterBinding
 import com.example.lunarp.databinding.RowCharacterBinding
 import com.example.lunarp.fragment.CharacterFragment
 import com.google.android.material.snackbar.Snackbar
@@ -51,8 +50,8 @@ class CharacterListAdapter(private val context: Context, var activity: MainActiv
         val data = getItem(position)
 
         holder.binding.tvname.setText("${data.name} niveau :   ${data.level}")
-        holder.binding.tvrace.setText("${data.race.name}")
-        holder.binding.tvrace2.setText("${data.classe.name}")
+        holder.binding.tvrace.text = "${data.race.name}"
+        holder.binding.tvrace2.text = "${data.classe.name}"
 
         holder.binding.imageViewDel.setImageResource(R.drawable.baseline_person_24)
 
@@ -88,7 +87,8 @@ class CharacterListAdapter(private val context: Context, var activity: MainActiv
                             if (response.isSuccessful){
                                 println("--- DEL --- ${response.body()}")
                                 this@CharacterListAdapter.notifyDataSetChanged()
-                                fragment?.updateList()
+                                fragment.updateList()
+
                             } else {
                                 println("--- DEL --- ${response}")
 

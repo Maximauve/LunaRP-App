@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.lunarp.MainActivity
 import com.example.lunarp.RequestUtils
 import com.example.lunarp.character.Character
 import com.example.lunarp.character.CharacterInterface
@@ -108,6 +109,7 @@ class ViewCharacter_Global : Fragment() {
 
         })
         binding.cancel.setOnClickListener {
+                startActivity(Intent(context, MainActivity::class.java))
                 activity!!.finish()
         }
 
