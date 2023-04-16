@@ -3,29 +3,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/color_bg_2"
-    tools:context=".character.update.UpdateCharacter_Global"
+    android:layout_height="match_parent"
+    tools:context=".character.read.ViewCharacter_Global"
+    android:background="@drawable/istockphoto_1128211614_170667a"
     android:theme="@style/Theme.LunaRP.Page">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_bg_2"
+        android:layout_margin="10dp"
         android:orientation="vertical"
         android:weightSum="1">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/cancel"
+                android:backgroundTint="@color/color_bg_1"
+                android:textColor="@color/color_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_margin="20dp"
                 android:layout_weight="1"
                 android:text="Listes des persos"
                 tools:layout_editor_absoluteX="16dp" />
@@ -33,70 +35,76 @@
 
             <Button
                 android:id="@+id/edit"
+                android:textColor="@color/color_light"
+                android:backgroundTint="@color/color_bg_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_margin="20dp"
                 android:layout_weight="1"
                 android:text="Editer"
                 tools:layout_editor_absoluteX="16dp" />
+
         </LinearLayout>
 
         <TextView
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:editable="false"
-            android:hint="Name"
+            android:layout_margin="10dp"
+            android:hint="NOM"
             android:textAlignment="viewStart"
-            android:textColor="@color/color_light"
-            android:textColorHint="@color/color_light"
-            android:textSize="14sp" />
+            android:textColor="@color/color_accent"
+            android:textColorHint="@color/color_accent"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_margin="10dp">
 
             <TextView
                 android:id="@+id/tv_race"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:editable="false"
                 android:hint="RACE"
                 android:textAlignment="viewStart"
                 android:textColor="@color/color_light"
                 android:textColorHint="@color/color_light"
-                android:textSize="14sp" />
+                android:textStyle="bold"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_class"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:editable="false"
-                android:hint="Class"
+                android:hint="CLASSE"
                 android:textAlignment="viewStart"
                 android:textColor="@color/color_light"
                 android:textColorHint="@color/color_light"
-                android:textSize="14sp" />
+                android:textStyle="bold"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tv_alignment"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:editable="false"
-                android:hint="Alignement"
+                android:hint="ALIGNEMENT"
                 android:textAlignment="viewStart"
                 android:textColor="@color/color_light"
                 android:textColorHint="@color/color_light"
-                android:textSize="14sp" />
+                android:textStyle="bold"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -108,7 +116,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -120,7 +130,7 @@
 
                     <TextView
                         android:id="@+id/tv_strenght_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:text="0"
@@ -131,7 +141,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -143,7 +155,7 @@
 
                     <TextView
                         android:id="@+id/tv_intelligence_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:text="0"
@@ -161,7 +173,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -173,7 +187,7 @@
 
                     <TextView
                         android:id="@+id/tv_dexterity_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:text="0"
@@ -184,7 +198,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -196,7 +212,7 @@
 
                     <TextView
                         android:id="@+id/tv_wisdom_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:text="0"
@@ -213,7 +229,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -225,7 +243,7 @@
 
                     <TextView
                         android:id="@+id/tv_constitution_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:text="0"
@@ -236,7 +254,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_margin="10dp"
                     android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
@@ -248,7 +268,7 @@
 
                     <TextView
                         android:id="@+id/tv_charisma_value"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:inputType="number"
                         android:text="0"
@@ -266,8 +286,9 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/description"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/color_bg_2"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/text_zone"
                 android:hint="Description..."
                 android:textColor="@color/color_light" />
         </com.google.android.material.textfield.TextInputLayout>

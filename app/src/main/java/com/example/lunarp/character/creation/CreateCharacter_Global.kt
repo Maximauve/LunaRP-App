@@ -184,7 +184,7 @@ class CreateCharacter_Global : Fragment() {
 
         binding.next.setOnClickListener  {view ->
             println("------------------> *Entries: ")
-            Snackbar.make(view, "COUCOU", Snackbar.LENGTH_LONG)
+            Snackbar.make(view, "Personnages créé !", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
 
             var strValue = strength.value
