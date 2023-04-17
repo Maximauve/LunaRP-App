@@ -63,6 +63,7 @@ class ViewCharacter_Global : Fragment() {
                     binding.tvIntelligenceValue.text = response.body()?.intelligence.toString()
                     binding.tvWisdomValue.text = response.body()?.wisdom.toString()
                     binding.tvCharismaValue.text = response.body()?.charisma.toString()
+                    binding.description.setText(response.body()?.description.toString())
 
 
                     println("----- $character ----")

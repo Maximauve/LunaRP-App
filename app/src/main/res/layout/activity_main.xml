@@ -27,7 +27,7 @@
                 android:textColor="@color/color_accent">
 
                 <ImageView
-                    android:id="@+id/profile_image"
+                    android:id="@+id/ivProfil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"

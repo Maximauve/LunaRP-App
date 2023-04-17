@@ -179,6 +179,7 @@ class UpdateCharacter_Global : Fragment() {
         * Manage all values !
         */
         val name = binding.etName
+        binding.description.setText(activity!!.intent.extras?.get("description").toString())
         name.text =  Editable.Factory.getInstance().newEditable(activity!!.intent.extras?.get("name").toString())
         val strength = binding.nbpStrenght
         strength.minValue = 1
@@ -234,7 +235,7 @@ class UpdateCharacter_Global : Fragment() {
             var raceSelected = binding.spinnerRace.selectedItem
             var classSelected = binding.spinnerClass.selectedItem
             var name = binding.etName.text
-            var description = "Ceci est un test"
+            var description = binding.description.text
             var alignment = binding.spinnerAlignment.selectedItem
             println("Je me nomme $name, je suis un jeune $raceSelected " +
                     "qui veux devenir le meilleur $classSelected du monde. " +
@@ -249,7 +250,7 @@ class UpdateCharacter_Global : Fragment() {
                 charisma= chaValue,
                 classe= classSelectedID!!.id,
                 constitution= conValue,
-                description= "Ceci est peut être un test",
+                description= description.toString(),
                 dexterity= dexValue,
                 experience=0,
                 intelligence= intValue,
@@ -277,7 +278,6 @@ class UpdateCharacter_Global : Fragment() {
                         val intent = Intent(context, ViewCharacter::class.java)
                         intent.putExtra("itemId", characterUpdate.id)
                         startActivity(intent)
-                        SessionManager.updateUser()
                         activity!!.finish()
                     }else{
                         println("Character response is not a succes : ${response.code()}")

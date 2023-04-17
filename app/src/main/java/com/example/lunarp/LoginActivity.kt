@@ -16,6 +16,7 @@ import com.example.lunarp.user.UserLoginClassItem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.create
 
 class Login : AppCompatActivity() {
     var errorMessage = ""
@@ -54,6 +55,10 @@ class Login : AppCompatActivity() {
                             println("|---> ${response.body()}")
                             SessionManager.logIn(response.body(), response.body()?.token ?: "")
 
+                            println("Session manager is declare")
+
+
+                            println("Image HERE : ${SessionManager.image}")
                             startActivity(main)
                             finish()
                         }

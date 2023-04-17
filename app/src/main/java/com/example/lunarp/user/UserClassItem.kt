@@ -1,5 +1,7 @@
 package com.example.lunarp.user
 
+import com.example.lunarp.LocalFile
+
 data class UserRegisterClassItem(
     val email: String,
     val id: Int? = null,
@@ -19,7 +21,9 @@ data class UserClassItem(
     val username: String,
     val token : String,
     val password: String,
-    val characters: Array<com.example.lunarp.character.Character>
+    val characters: Array<com.example.lunarp.character.Character>,
+    val image : LocalFile?,
+    val userId: Int?
 
 )
 

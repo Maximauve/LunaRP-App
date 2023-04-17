@@ -14,10 +14,12 @@ import retrofit2.Response
 object SessionManager {
     public var username : String = "";
     public var userMail = "";
-    public var userId : Int = -1;
+    public var userId : Int? = null;
+    public var Id : Int = -1;
     public  var userToken: String = ""
     public var userRole: String = ""
     public var characters : Array<com.example.lunarp.character.Character> = arrayOf()
+    public var image : LocalFile? =null
 
     fun logIn(user: UserClassItem?,userToken: String){
         println("LOGIN HERE")
@@ -25,7 +27,9 @@ object SessionManager {
         this.username = user.username
         this.userRole = user!!.role
         this.userToken = userToken
-        this.userId = user.id
+        this.Id = user.id
+        this.userId = user.userId
+        this.image = user.image
         println("My id $userId")
 
         RequestUtils.reloadClient()
@@ -45,7 +49,7 @@ object SessionManager {
     }
 
     override fun toString(): String {
-        return "SessionManager(username='$username', usermail='$userMail', userid=$userId, userCharacters=${characters.size})"
+        return "SessionManager(user ID = $Id, username='$username', usermail='$userMail', userid=$userId, userCharacters=${characters.size})"
     }
 
     fun updateUser(){

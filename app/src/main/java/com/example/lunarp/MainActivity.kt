@@ -1,6 +1,7 @@
 package com.example.lunarp
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.animation.AnimationUtils
@@ -36,6 +37,14 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (SessionManager.image != null){
+            binding.ivProfil.setImageBitmap(BitmapFactory.decodeFile(SessionManager.image?.path))
+
+        }else {
+            binding.ivProfil.setImageResource(R.drawable.baseline_person_24)
+        }
+
         val tabs: TabLayout = binding.tabs
         val viewPager = binding.viewPager
 
@@ -60,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         val fab_dice100 = binding.fabDice100
         var total : Int = 0
         var diceChosen = (mutableListOf<Int>())
-        val profileIcon = binding.profileImage
+        val profileIcon = binding.ivProfil
 
         profileIcon.setOnClickListener{view ->
             SessionManager.logOut()

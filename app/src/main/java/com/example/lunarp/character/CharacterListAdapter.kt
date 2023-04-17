@@ -53,7 +53,7 @@ class CharacterListAdapter(private val context: Context, var activity: MainActiv
         holder.binding.tvrace.text = "${data.race.name}"
         holder.binding.tvrace2.text = "${data.classe.name}"
 
-        holder.binding.imageViewDel.setImageResource(R.drawable.baseline_person_24)
+        holder.binding.ivCharacter.setImageResource(R.drawable.baseline_person_24)
 
         holder.binding.cardCharacter.setOnClickListener {
             Snackbar.make(it, "You click on ${data.name}", Snackbar.LENGTH_LONG)

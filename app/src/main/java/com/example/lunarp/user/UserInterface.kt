@@ -1,5 +1,6 @@
 package com.example.lunarp.user
 
+import com.example.lunarp.LocalFile
 import com.example.lunarp.character.Character
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -22,4 +23,7 @@ interface UserInterface {
 
     @GET("users/{id}")
     fun getOne(@Path("id") id: String): Call<UserClassItem>
+
+    @GET("local-files/{id}")
+    fun getImage(@Path("id") id: Int?) : Call<LocalFile>
 }
